@@ -273,12 +273,12 @@ export default function CreatePostPage() {
 
               <div className="space-y-2">
                 <Label>Company Context (optional)</Label>
-                <Select value={selectedCompany} onValueChange={setSelectedCompany}>
+                <Select value={selectedCompany || "none"} onValueChange={(v) => setSelectedCompany(v === "none" ? "" : v)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a company" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">No company</SelectItem>
+                    <SelectItem value="none">No company</SelectItem>
                     {companies.map((company) => (
                       <SelectItem key={company.id} value={company.id}>
                         {company.name}
